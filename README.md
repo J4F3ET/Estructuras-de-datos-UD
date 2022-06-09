@@ -1,21 +1,48 @@
 <h1>Estructuras-de-datos-UD</h1>
 <p>Este Repositorio contiene actualmente</p>
- <table>
-        <tr>
-            <th>#</th>
-            <th>Metodo</th>
-            <th>Tipo de Lista</th>
-            <th>Estado</th>
-        </tr>
-        <tr>
-            <td>
-                Lista dos
-            </td>
-        </tr>
+<table>
+        <thead><h1>Lista Simple</h1></thead>
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>Metodo</th>
+                <th>Estado</th>
+            </tr>
+            <tr><td>1</td><td>Buscar Datos </td><td>Solucionado</td></tr> 
+            <tr><td>2</td><td>Eliminar nodo </td><td>Error</td></tr> 
+            <tr><td>3</td><td>Invertir lista</td><td>Solucionado</td></tr> 
+            <tr><td>4</td><td>Numero mayor </td><td>Solucionado</td></tr> 
+            <tr><td>5</td><td>Numero menor </td><td>Solucionado</td></tr> 
+            <tr><td>6</td><td>Numeros pares </td><td>Solucionado</td></tr> 
+            <tr><td>7</td><td>Suma de nodos</td><td>Solucionado</td></tr> 
+            <tr><td>8</td><td>Mayusculas a minusculas y viceversa </td><td>Solucionado</td></tr> 
+            <tr><td>9</td><td>Contar consonantes y vocales </td><td>Solucionado</td></tr> 
+            <tr><td>10</td><td>Contar palabras</td><td>Solucionado</td></tr> 
+            <tr><td>11</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Solucionado</td></tr> 
+            <tr><td>12</td><td>Detector de palabra palindroma</td><td>Solucionado</td></tr> 
+            <tr><td>13</td><td>Suma de listas</td><td>Solucionado</td></tr> 
+        </tbody>
     </table>
-ListaSimple---ListaDoble----LISTO --1)construir programa que capture dos listas dobles y en una tercera sume las dos anteriores (osea nodo 1 lista 1 + nodo 1 lista 2 etc).<br>
-ListaSimple---ListaDoble----LISTO --2)construir programa que capture una lista de caracteres y debe mostrar la cantidad de letras, números y caracteres especiales.<br>
-ListaSimple---ListaDoble----LISTO --3)construir programa que capture lista de caracteres debe cambiar de mayúsculas a minúsculas o viceversa en aquellos nodos que halla letras.<br>
-ListaSimple---ListaDoble----LISTO --4)construir programa que capture lista de caracteres y determine si se encuentra una palabra paligrafe.<br>
-ListaSimple---ListaDoble----LISTO --5)construir programa que capture lista de caracteres y debe identificar cuantas consonantes, vocales, caracteres especiales y numeros<br>
-ListaSimple---ListaDoble----LISTO --6)construir programa que capture y determine cuantas palabra hay en la lista.<br>
+    <table>
+        <thead><h1>Lista Doble</h1></thead>
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>Metodo</th>
+                <th>Estado</th>
+            </tr>
+            <tr><td>14</td><td>Buscar Datos </td><td>Solucionado</td></tr> 
+            <tr><td>15</td><td>Eliminar nodo </td><td>Error</td></tr> 
+            <tr><td>16</td><td>Invertir lista</td><td>Solucionado</td></tr> 
+            <tr><td>17</td><td>Numero mayor </td><td>Solucionado</td></tr> 
+            <tr><td>18</td><td>Numero menor </td><td>Solucionado</td></tr> 
+            <tr><td>19</td><td>Numeros pares </td><td>Solucionado</td></tr> 
+            <tr><td>20</td><td>Suma de nodos</td><td>Solucionado</td></tr> 
+            <tr><td>21</td><td>Mayusculas a minusculas y viceversa </td><td>Solucionado</td></tr> 
+            <tr><td>22</td><td>Contar consonantes y vocales </td><td>Solucionado</td></tr> 
+            <tr><td>23</td><td>Contar palabras</td><td>Solucionado</td></tr> 
+            <tr><td>24</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Solucionado</td></tr> 
+            <tr><td>25</td><td>Detector de palabra palindroma</td><td>Solucionado</td></tr> 
+            <tr><td>26</td><td>Suma de listas</td><td>Solucionado</td></tr> 
+        </tbody>
+    </table>
