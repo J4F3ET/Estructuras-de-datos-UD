@@ -2,36 +2,43 @@
 #include <locale.h>
 #include <stdlib.h>
 using namespace std; 
-class ListaS{
+class ListaD{
 	int dato;
-	ListaS *sig;
+	ListaD *sig,*ant;
 	public:
-		void crearCab(ListaS *&, int);
-		void agregarNodo(ListaS *&,int);
-		void crearL(ListaS *&);
-		void mostrar(ListaS *);
+		void crearCab(ListaD *&, int);
+		void agregarNodo(ListaD *&,int);
+		void crearL(ListaD *&);
+		void mostrar(ListaD *);
+        int eliminar(ListaD *&,int);
 };
-void ListaS::crearCab(ListaS *&cab, int dato){
-	cab = new ListaS;
-	cab -> dato=dato;
-	cab -> sig = NULL;
+void ListaD::crearCab(ListaD *&cab, int dato){
+	cab=new ListaD;
+	cab->dato=dato;
+	cab->sig=cab->ant=NULL;
 }
-void ListaS::agregarNodo(ListaS *&cab, int dato){
-	ListaS *aux = cab;
-	while(aux->sig){
-		aux=aux->sig;
+void ListaD::agregarNodo(ListaD *&cab, int dato){
+	ListaD *aux=cab;
+	while(aux->sig){ //Equivale a while(aux->sig!=NULL){}
+		aux=aux->sig;    
 	}
-	aux -> sig = new ListaS;
+	// CREA NODO
+	aux->sig=new ListaD;
+	// UBICA ANT APUNTANDO AL NODO ANTERIOR DEL NODO ACTUAL
+	aux->sig->ant=aux;
+	// HACE ABANZAR AL AUXILIAR AL NODO CREADO
 	aux=aux->sig;
-	aux-> dato=dato;
-	aux->sig=NULL; 
+	// charRODUCE EL DATO
+	aux->dato=dato;
+	// AUXILIAR EN SU PARTE SIGUIENTE VA AQUEDAR APUNTANDO A NULO
+	aux->sig=NULL;
 }
-void ListaS::crearL(ListaS *&cab){
+void ListaD::crearL(ListaD *&cab){
 	int dato = 666;
 	cout<<"Creandor de la lista\nEscriba un numero menor a 1 para finalizar la lista\nPor favor rellene la lista"<<endl;
 	cout<<"----------"<<endl;
-	while (dato>0){
-		cout<<"Numero = ";
+	while(dato>0){
+		cout<<"Dato: ";
 		cin>>dato;
 		if(dato>0){
 			if(!cab){
@@ -40,10 +47,11 @@ void ListaS::crearL(ListaS *&cab){
 				agregarNodo(cab,dato);
 			}
 		}
+
 	}
 }
-void ListaS::mostrar(ListaS *cab){
-	ListaS*aux=cab;
+void ListaD::mostrar(ListaD *cab){
+	ListaD*aux=cab;
 	cout<<"--------------"<<endl;
 	while(aux){
 		cout<<"Dato = "<<aux->dato<<endl;
@@ -51,6 +59,36 @@ void ListaS::mostrar(ListaS *cab){
 	}
 	cout<<"--------------"<<endl;
 	system("pause");
+}
+// INSERTE EL METODO DEL PROGRAMA
+int ListaD::eliminar(ListaD *&cab,int dato){
+	ListaD *aux1,*aux;
+	aux1=aux=cab;//auxiliares en la cabeza
+	while(aux&&aux->dato!=dato){
+        if(aux){
+            aux1=aux;
+            aux=aux->sig;
+        }else{
+            return -1;
+        }
+        
+        cout<<aux->dato;
+    }
+    cout<<aux->dato<<"weon";
+	if(dato==aux->dato&&aux){
+		if(aux->sig==NULL){
+			aux1->sig=NULL;
+		}else{
+			if(aux==cab&&aux->sig){
+				cab=cab->sig;
+			}else{
+				aux1->sig=aux->sig;
+			}
+		}
+		delete aux;
+	}else{
+		cout<<"Dato no encontrado\n";
+	}
 }
 void letrero(){
 	cout<<"*---------------------------------------*"<<endl;
@@ -65,7 +103,7 @@ void finDelPrograma(){
 	cout<<"*---------------------------------------*"<<endl;
 }
 int menu(int opt){
-	cout<<"Escoja una opcion\n 1)INTRODUZACA FUNCION DEL PROGRAMA \n 2)Mostrar Lista\n 3)Salir del programa\n->";
+	cout<<"Escoja una opcion\n 1)Eliminar Nodo \n 2)Mostrar Lista\n 3)Salir del programa\n->";
 	cin>>opt;
 	return opt;
 }
@@ -73,7 +111,7 @@ int main(){
 // INICIO DEL PROGRAMA
 	letrero();
     setlocale(LC_ALL, "");
-	ListaS objeto, *cab=NULL;
+	ListaD objeto, *cab=NULL;
 	objeto.crearL(cab);
 	int opt,aux;
     
@@ -85,7 +123,9 @@ int main(){
 		{
 		case 1:
 			// FUNCION DEL PROGRAMA
-			
+			cout<<"Que dato desea eliminar : ";
+			cin>>aux;
+            aux = objeto.eliminar(cab,aux);
 			break;
 		case 2:
 			// MOSTRAR LISTA
