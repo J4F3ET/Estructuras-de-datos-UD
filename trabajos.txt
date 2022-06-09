@@ -1,6 +1,0 @@
-<LISTO>1)construir programa que capture dos listas dobles y en una tercera sume las dos anteriores (osea nodo 1 lista 1 + nodo 1 lista 2 etc).
-<LISTO>2)construir programa que capture una lista de caracteres y debe mostrar la cantidad de letras, números y caracteres especiales.
-<LISTO>3)construir programa que capture lista de caracteres debe cambiar de mayúsculas a minúsculas o viceversa en aquellos nodos que halla letras.
-<LISTO>4)construir programa que capture lista de caracteres y determine si se encuentra una palabra paligrafe.
-<LISTO>5)construir programa que capture lista de caracteres y debe identificar cuantas consonantes, vocales, caracteres especiales y numeros
-6)construir programa que capture y determine cuantas palabra hay en la lista.

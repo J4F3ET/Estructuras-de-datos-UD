@@ -144,6 +144,6 @@ int main()
     lista.crearLista(cab);
     lista.detector(cab);
     lista.mostrarLista(cab);
-    cout<<"La lista contiene CONSONATES->"<<numericos<<" y "<<especial<<" VOCALES"<<endl;
+    cout<<"La lista contiene CONSONATES "<<numericos<<" y "<<especial<<" VOCALES"<<endl;
     return 0;
 }

@@ -64,7 +64,7 @@ void ListaS::filterCaracterLista(ListaS *cab){
                 especiales++;
             }
         }
-
+		aux=aux->sig;
     }
 }
 void resultados(){
@@ -76,13 +76,13 @@ void letrero(){
     cout<<"*---------------------------------------*"<<endl;
     cout<<"*---------------Bienvenido--------------*"<<endl;
     cout<<"*---------------------------------------*"<<endl;
-    cout<<"\nCuantas palabras contiene la lista"<<endl;
+    cout<<"\nDetector de caracteres"<<endl;
 }
 int main(){
 	letrero();
 	ListaS objeto, *cab=NULL;
 	objeto.crearL(cab);
     objeto.filterCaracterLista(cab);
-    objeto.mostrar(cab);
-
+    // objeto.mostrar(cab);
+	resultados();
 }

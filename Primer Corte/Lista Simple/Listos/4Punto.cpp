@@ -79,7 +79,7 @@ void letrero(){
 	cout<<"*---------------------------------------*"<<endl;
 	cout<<"*---------------Bienvenido--------------*"<<endl;
 	cout<<"*---------------------------------------*"<<endl;
-	cout<<"\nCuantas palabras contiene la lista"<<endl;
+	cout<<"\n Detector de palabra palindroma"<<endl;
 }
 int main(){
 	ListaS objeto, *cab=NULL;
