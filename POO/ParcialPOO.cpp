@@ -3,12 +3,12 @@
 #include<string.h>
 #include<locale.h>
 using namespace std;
-class SistemaInfomracionLibros{
+class SistemaInfomacionLibros{
     private:
         char tituloLibro[50],autor[30],editorial[50];
         int numPaginas,anoEdit,isbn,numEdit,estado;
     public:
-        SistemaInfomracionLibros(){
+        SistemaInfomacionLibros(){
             strcpy(tituloLibro,"Desconocido");
             strcpy(autor,"Desconocido");
             strcpy(editorial,"Desconocida");
@@ -19,7 +19,7 @@ class SistemaInfomracionLibros{
             estado=0;
             
         }
-        ~SistemaInfomracionLibros(){
+        ~SistemaInfomacionLibros(){
         	cout<<"Ejecuntando destructor"<<endl;
 		}
         void setTituloLibro(char aux[50]){
@@ -91,7 +91,7 @@ class SistemaInfomracionLibros{
         }
         void getEstado(){
         	char Estado[12];
-            if(estado=1){
+            if(estado==1){
                 strcpy(Estado,"Existente");
             }else{
                 strcpy(Estado,"Inexistente");
@@ -114,10 +114,14 @@ class SistemaInfomracionLibros{
             int aux=isbn;
             return aux;
         }
-        char darTitulo(){
-            char titulo[50];
-            strcpy(titulo,tituloLibro);
-            return *titulo;
+        string darTitulo(){
+            string titulo;
+            titulo=tituloLibro;
+            return titulo;
+        }
+        int getExistentes(){
+            int aux=estado;
+            return aux;
         }
 };
 letrero(){
@@ -126,32 +130,34 @@ cout<<"--------Bienvenido--------"<<endl;
 cout<<"--------------------------"<<endl;
 }
 menu(){
-cout<<"--------------------------"<<endl;
-cout<<"Por favor escoja una opcion"<<endl;
-cout<<"--------------------------"<<endl;
-cout<<"1)"<<"Registrar Libro"<<endl;
-cout<<"2)"<<"Actualizar datos de un libro"<<endl;
-cout<<"3)"<<"Consultar"<<endl;
-cout<<"4)"<<"Libros existentes actualmente"<<endl;
-cout<<"5)"<<"Mostrar todo"<<endl;
-cout<<"6)"<<"Salir"<<endl;
-cout<<"--------------------------"<<endl;
+    cout<<"--------------------------"<<endl;
+    cout<<"Por favor escoja una opcion"<<endl;
+    cout<<"--------------------------"<<endl;
+    cout<<"1)"<<"Registrar Libro"<<endl;
+    cout<<"2)"<<"Actualizar datos de un libro"<<endl;
+    cout<<"3)"<<"Consultar"<<endl;
+    cout<<"4)"<<"Libros existentes actualmente"<<endl;
+    cout<<"5)"<<"Mostrar todo"<<endl;
+    cout<<"6)"<<"Salir"<<endl;
+    cout<<"--------------------------"<<endl;
 }
 menuActualizarDatos(){
-cout<<"--------------------------"<<endl;
-cout<<"Por favor escoja una opcion"<<endl;
-cout<<"--------------------------"<<endl;
-cout<<"1)"<<"Actualizar titulo del libro"<<endl;
-cout<<"2)"<<"Actualizar autor"<<endl;
-cout<<"3)"<<"Actualizar editorial"<<endl;
-cout<<"4)"<<"Actualizar numero de paginas"<<endl;
-cout<<"5)"<<"Actualizar numero de edicion"<<endl;
-cout<<"6)"<<"Actualizar estado"<<endl;
-cout<<"7)"<<"Actualizar año de edicion"<<endl;
-cout<<"8)"<<"Salir"<<endl;
-cout<<"--------------------------"<<endl;
+    system("cls");
+    cout<<"--------------------------"<<endl;
+    cout<<"Por favor escoja una opcion"<<endl;
+    cout<<"--------------------------"<<endl;
+    cout<<"1)"<<"Actualizar titulo del libro"<<endl;
+    cout<<"2)"<<"Actualizar autor"<<endl;
+    cout<<"3)"<<"Actualizar editorial"<<endl;
+    cout<<"4)"<<"Actualizar numero de paginas"<<endl;
+    cout<<"5)"<<"Actualizar numero de edicion"<<endl;
+    cout<<"6)"<<"Actualizar estado"<<endl;
+    cout<<"7)"<<"Actualizar año de edicion"<<endl;
+    cout<<"8)"<<"Salir"<<endl;
+    cout<<"--------------------------"<<endl;
 }
 menuConsultar(){
+    system("cls");
     cout<<"--------------------------"<<endl;
     cout<<"Por favor escoja una opcion"<<endl;
     cout<<"--------------------------"<<endl;
@@ -161,21 +167,25 @@ menuConsultar(){
     cout<<"--------------------------"<<endl;
 }
 fin(){
-cout<<"--------------------------"<<endl;
-cout<<"-----Fin del programa-----"<<endl;
-cout<<"--------------------------"<<endl;
+    system("cls");
+    cout<<"--------------------------"<<endl;
+    cout<<"-----Fin del programa-----"<<endl;
+    cout<<"--------------------------"<<endl;
 }
 main(){
     setlocale(LC_ALL, "");
-    SistemaInfomracionLibros libro[7];
+    SistemaInfomacionLibros libro[7];
     int opt;
     char tituloLibro[50],autor[30],editorial[50];
     int numPaginas,anoEdit,isbn,numEdit,estado;
+    letrero();
     do{
         menu();
         cin>>opt;
+        system("cls");
         switch(opt){
         case 1:
+        // REGISTRAR LIBRO
                 int idLibro;
                 cout<<"--------------------------"<<endl;
                 cout<<"Digite del 1 al 7\n En que seccion desea guardar el libro"<<endl;
@@ -186,14 +196,17 @@ main(){
                 if(aux == 0){
                     cout<<"--------------------------"<<endl;
                     cout<<"Escriba el nombre del libro"<<endl;
+                    cin.ignore();
                     cin.getline(tituloLibro,50,'\n');
                     libro[idLibro-1].setTituloLibro(tituloLibro);
                     cout<<"--------------------------"<<endl;
                     cout<<"Escriba el nombre del autor del libro"<<endl;
+                    cin.ignore();
                     cin.getline(autor,30,'\n');
                     libro[idLibro-1].setAutor(autor);
                     cout<<"--------------------------"<<endl;
                     cout<<"Escriba el nombre de la editorial del libro"<<endl;
+                    cin.ignore();
                     cin.getline(editorial,50,'\n');
                     libro[idLibro-1].setEditoria(editorial);
                     cout<<"--------------------------"<<endl;
@@ -223,6 +236,7 @@ main(){
                 }
             break;
         case 2:
+        // MODIFICAR DATOS DEL LIBRO
                 cout<<"--------------------------"<<endl;
                 cout<<"Digite del 1 al 7\n El libro que desea seleccionar"<<endl;
                 cout<<"--------------------------"<<endl;
@@ -236,18 +250,21 @@ main(){
                             case 1:                            
                             cout<<"--------------------------"<<endl;
                             cout<<"Escriba el nombre del libro"<<endl;
+                            cin.ignore();
                             cin.getline(tituloLibro,50,'\n');
                             libro[idLibro-1].setTituloLibro(tituloLibro);
                                 break;
                             case 2:
                             cout<<"--------------------------"<<endl;
                             cout<<"Escriba el nombre del autor del libro"<<endl;
+                            cin.ignore();
                             cin.getline(autor,30,'\n');
                             libro[idLibro-1].setAutor(autor);
                                 break;
                             case 3:
                             cout<<"--------------------------"<<endl;
                             cout<<"Escriba el nombre de la editorial del libro"<<endl;
+                            cin.ignore();
                             cin.getline(editorial,50,'\n');
                             libro[idLibro-1].setEditoria(editorial);
                                 break;
@@ -288,49 +305,90 @@ main(){
                 } 
             break;
         case 3:
-               
+            // CONSULTAR POR TITULO O CODIGO
                 do{
                     menuConsultar();
                     cin>>opt;
+                    system("cls");
                     switch (opt)
                     {
                     case 1:
+                    // CONSULTA POR TITULO
                         cout<<"--------------------------"<<endl;
                         cout<<"Escriba el nombre que desea buscar"<<endl;
                         cout<<"--------------------------"<<endl;
+                        cin.ignore();
                         cin.getline(tituloLibro,50,'\n');
                         for(int i=0;i<7;i++){
-                            char dato[50];
-    
+                            string dato;
+                            dato=libro[i].darTitulo();
                             if(dato==tituloLibro){
+                                system("cls");
                                 libro[i].mostrarTodo();
+                                system("pause");
                             }else{
+                                cout<<"--------------------------"<<endl;
+                                cout<<"Error, libro no encontrado"<<endl;
+                                cout<<"--------------------------"<<endl;
                             }
                         }
                         break;
                     case 2:
-                        
+                    // CONSULTA POR CODIGO
+                        cout<<"--------------------------"<<endl;
+                        cout<<"Escriba el codigo(ISBN) que desea buscar"<<endl;
+                        cout<<"--------------------------"<<endl;
+                        cin>>isbn;
+                        for(int i=0;i<7;i++){
+                            if(isbn==libro[i].darId()){
+                                system("cls");
+                                libro[i].mostrarTodo();
+                                system("pause");
+                            }else{
+                                cout<<"--------------------------"<<endl;
+                                cout<<"Error, libro no encontrado"<<endl;
+                                cout<<"--------------------------"<<endl;
+                            }
+                        }
                         break;
                     case 3:
-                        
+                    // SALIR
                         break;
-                    
                     default:
+                        system("cls");
                         break;
                     }
                 }while(opt!=3);
             break;	
         case 4:
-            
+                // LIBROS EXISTENTES ACTUALMENTE
+                for(int i=0;i<7;i++){
+                    if(1==libro[i].getExistentes())
+                        libro[i].mostrarTodo();
+                }
+                system("pause");
             break;
         case 5:
+                cout<<"--------------------------"<<endl;
+                cout<<"Todos los Libros"<<endl;
+                cout<<"--------------------------"<<endl;
+                for(int i=0;i<7;i++){
+                    // if(){
+                       cout<<"----------------------------------------------------------"<<endl;
+                       libro[i].mostrarTodo();
+                       cout<<"----------------------------------------------------------"<<endl;
+                       cout<<"Para mostrar el sigueinte libro ";
+                       system("pause");
+                    // }
+                }
             
             break;
         case 6:
-            
+            // SALIR
             break;
         
         default:
+            system("cls")
             break;
         }
     }while(opt!=6);
