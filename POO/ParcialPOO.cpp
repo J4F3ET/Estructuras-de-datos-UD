@@ -388,7 +388,7 @@ main(){
             break;
         
         default:
-            system("cls")
+            system("cls");
             break;
         }
     }while(opt!=6);
