@@ -1,0 +1,9 @@
+Estao-> Listo ---Punto 3.3
+Estao-> Listo ---Punto 3.4
+Estao-> Listo ---Punto 3.5
+Estao-> Listo ---Punto 3.6
+Estao-> Listo ---Punto 3.7
+Estao-> Listo ---Punto 3.8
+Estao-> Listo ---Punto 3.10
+Estao->       ---Punto 3.11
+Estao->       ---Punto 3.13
