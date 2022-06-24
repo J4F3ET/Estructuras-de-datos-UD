@@ -9,7 +9,8 @@
             <th>Asunto o programa</th>
             <th>Estado</th>
         </tr>
-        <tr><td>1</td><td>Parcial primer semestre</td><td>Sin completar</td></tr> 
+        <tr><td>1</td><td>Parcial primer semestre</td><td>Solucionado</td></tr> 
+        <tr><td>2</td><td>Taller repaso</td><td>Incompleto</td></tr> 
     </tbody>
 </table>
 <h2>Estructura de datos</h2>
@@ -57,5 +58,51 @@
         <tr><td>24</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Solucionado</td></tr> 
         <tr><td>25</td><td>Detector de palabra palindroma</td><td>Solucionado</td></tr> 
         <tr><td>26</td><td>Suma de listas</td><td>Solucionado</td></tr> 
+    </tbody>
+</table>
+<table>
+    <thead><h3>Lista Circulares Simples</h3></thead>
+    <tbody>
+        <tr>
+            <th>#</th>
+            <th>Metodo</th>
+            <th>Estado</th>
+        </tr>
+        <tr><td>27</td><td>Buscar Datos </td><td>Sin solucionar</td></tr> 
+        <tr><td>28</td><td>Eliminar nodo </td><td>Sin solucionar</td></tr> 
+        <tr><td>29</td><td>Invertir lista</td><td>Sin solucionar</td></tr> 
+        <tr><td>30</td><td>Numero mayor </td><td>Sin solucionar</td></tr> 
+        <tr><td>31</td><td>Numero menor </td><td>Sin solucionar</td></tr> 
+        <tr><td>32</td><td>Numeros pares </td><td>Sin solucionar</td></tr> 
+        <tr><td>33</td><td>Suma de nodos</td><td>Sin solucionar</td></tr> 
+        <tr><td>34</td><td>Mayusculas a minusculas y viceversa </td><td>Sin solucionar</td></tr> 
+        <tr><td>35</td><td>Contar consonantes y vocales </td><td>Sin solucionar</td></tr> 
+        <tr><td>36</td><td>Contar palabras</td><td>Sin solucionar</td></tr> 
+        <tr><td>37</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Sin solucionar</td></tr> 
+        <tr><td>38</td><td>Detector de palabra palindroma</td><td>Sin solucionar</td></tr> 
+        <tr><td>39</td><td>Suma de listas</td><td>Sin solucionar</td></tr> 
+    </tbody>
+</table>
+<table>
+    <thead><h3>Lista Circulares Dobles</h3></thead>
+    <tbody>
+        <tr>
+            <th>#</th>
+            <th>Metodo</th>
+            <th>Estado</th>
+        </tr>
+        <tr><td>40</td><td>Buscar Datos </td><td>Solucionado</td></tr> 
+        <tr><td>41</td><td>Eliminar nodo </td><td>Solucionado</td></tr> 
+        <tr><td>42</td><td>Invertir lista</td><td>Solucionado</td></tr> 
+        <tr><td>43</td><td>Numero mayor </td><td>Solucionado</td></tr> 
+        <tr><td>44</td><td>Numero menor </td><td>Solucionado</td></tr> 
+        <tr><td>45</td><td>Numeros pares </td><td>Sin solucionar</td></tr> 
+        <tr><td>46</td><td>Suma de nodos</td><td>Sin solucionar</td></tr> 
+        <tr><td>47</td><td>Mayusculas a minusculas y viceversa </td><td>Sin solucionar</td></tr> 
+        <tr><td>48</td><td>Contar consonantes y vocales </td><td>Sin solucionar</td></tr> 
+        <tr><td>49</td><td>Contar palabras</td><td>Sin solucionar</td></tr> 
+        <tr><td>50</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Sin solucionar</td></tr> 
+        <tr><td>51</td><td>Detector de palabra palindroma</td><td>Sin solucionar</td></tr> 
+        <tr><td>52</td><td>Suma de listas</td><td>Sin solucionar</td></tr> 
     </tbody>
 </table>
