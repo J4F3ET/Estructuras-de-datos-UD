@@ -70,7 +70,7 @@
         </tr>
         <tr><td>27</td><td>Buscar Datos </td><td>Solucionado</td></tr> 
         <tr><td>28</td><td>Eliminar nodo </td><td>Solucionado</td></tr> 
-        <tr><td>29</td><td>Invertir lista</td><td>Sin solucionar</td></tr> 
+        <tr><td>29</td><td>Invertir lista</td><td>Solucionado</td></tr> 
         <tr><td>30</td><td>Numero mayor </td><td>Solucionado</td></tr> 
         <tr><td>31</td><td>Numero menor </td><td>Solucionado</td></tr> 
         <tr><td>32</td><td>Numeros pares </td><td>Solucionado</td></tr> 

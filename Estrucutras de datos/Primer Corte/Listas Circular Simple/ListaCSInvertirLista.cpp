@@ -44,18 +44,31 @@ public:
         cout<<"Dato: "<<aux->dato<<endl;
         system("pause");
     }
-    void invertirL(ListaCS *&cab){//FALTA
-        ListaCS *aux=cab,*aux2=NULL,*aux3=NULL;
+    int nodos(ListaCS *cab){
+        ListaCS *aux=cab;
+        int i=1;
         while(aux->sig!=cab){
-            aux2=aux->sig;
-            aux->sig=aux3;
-            aux3=aux;
-            aux=aux2;
+            i++;
+            aux=aux->sig;
         }
-        aux=aux3;
-        while(aux3->sig!=cab){
-            cout<<"Dato = "<<aux3->dato<<endl;
-            aux3=aux3->sig;
+        return i;
+    }
+    void invertirL(ListaCS *&cab){
+        ListaCS *aux=cab,*aux2=cab,*aux3=cab;
+        int nNodos,dato,j=0;
+        nNodos=nodos(cab);
+        while(aux->sig!=cab){
+            aux=aux->sig;
+
+        }
+        cout<<aux->dato<<endl;
+        dato=aux->dato;
+        for(int i=1;i<nNodos;i++){
+            while(aux->sig->dato!=dato){
+                aux=aux->sig;
+            }
+            cout<<aux->dato<<endl;
+            dato=aux->dato;
         }
         system("pause");
     }
@@ -67,7 +80,7 @@ void letrero(){
 	cout<<"*---------------Bienvenido--------------*"<<endl;
 	cout<<"*---------------------------------------*"<<endl;
 	cout<<"\nDescripcion del programa:"<<endl;
-	cout<<"Este programa tiene como fin "<<endl;//Escriba la descripcion aqui
+	cout<<"Este programa tiene como fin, mostrar la lista invertida "<<endl;//Escriba la descripcion aqui
 }
 void finDelPrograma(){
 	cout<<"*---------------------------------------*"<<endl;
@@ -75,7 +88,7 @@ void finDelPrograma(){
 	cout<<"*---------------------------------------*"<<endl;
 }
 int menu(int opt){
-	cout<<"Escoja una opcion\n 1)INTRODUZACA FUNCION DEL PROGRAMA \n 2)Mostrar Lista\n 3)Salir del programa\n->";
+	cout<<"Escoja una opcion\n 1)Lista invertida \n 2)Mostrar Lista\n 3)Salir del programa\n->";
 	cin>>opt;
 	return opt;
 }
