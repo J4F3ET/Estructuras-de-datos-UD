@@ -98,11 +98,11 @@
         <tr><td>44</td><td>Numero menor </td><td>Solucionado</td></tr> 
         <tr><td>45</td><td>Numeros pares </td><td>Solucionado</td></tr> 
         <tr><td>46</td><td>Suma de nodos</td><td>Solucionado</td></tr> 
-        <tr><td>47</td><td>Mayusculas a minusculas y viceversa </td><td>Sin solucionar</td></tr> 
-        <tr><td>48</td><td>Contar consonantes y vocales </td><td>Sin solucionar</td></tr> 
+        <tr><td>47</td><td>Mayusculas a minusculas y viceversa </td><td>Solucionado</td></tr> 
+        <tr><td>48</td><td>Contar consonantes y vocales </td><td>Solucionado</td></tr> 
         <tr><td>49</td><td>Contar palabras</td><td>Sin solucionar</td></tr> 
-        <tr><td>50</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Sin solucionar</td></tr> 
-        <tr><td>51</td><td>Detector de palabra palindroma</td><td>Sin solucionar</td></tr> 
-        <tr><td>52</td><td>Suma de listas</td><td>Sin solucionar</td></tr> 
+        <tr><td>50</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Solucionado</td></tr> 
+        <tr><td>51</td><td>Detector de palabra palindroma</td><td>Solucionado</td></tr> 
+        <tr><td>52</td><td>Suma de listas</td><td>Solucionado</td></tr> 
     </tbody>
 </table>

@@ -2,26 +2,28 @@
 #include <locale.h>
 #include <stdlib.h>
 using namespace std;
-class ListaCS{
+class ListaCD{
 private:
     char dato;
-    ListaCS *sig;
+    ListaCD *sig,*ant;
 public:
-    void crearCab(ListaCS *&cab,char dato){
-        cab = new ListaCS;
+    void crearCab(ListaCD *&cab,char dato){
+        cab = new ListaCD;
         cab->dato = dato;
-        cab->sig=cab;
+        cab->sig=cab->ant=cab;
     }
-    void agregarNodo(ListaCS *&cab,char dato){
-        ListaCS *aux=cab;
+    void agregarNodo(ListaCD *&cab,char dato){
+        ListaCD *aux=cab;
         while(aux->sig!=cab)//avanza el apuntador al final
             aux = aux->sig;
-        aux->sig=new ListaCS;//crear un nuevo nodo
+        aux->sig=new ListaCD;//crear un nuevo nodo
+        aux->sig->ant=aux;//antes de avanzar el apuntador va enlazar la parte sig del nuevo nodo a la parte ant con aux que se encuentra todavia en el nodo anterior al nuevo
         aux=aux->sig;//avanzo el apuntador ya esta enlazado su parteanterior
         aux->dato = dato;//introduzco el dato
         aux->sig=cab;//enlazo el final de la lista con la cabeza siguientdo la estructura de la Listas Circulares
+        cab->ant=aux;//enlazo la cabeza con el ultimo nodo
     }
-    void crearLista(ListaCS *&cab){
+    void crearLista(ListaCD *&cab){
         char dato='a';
         cout<<"Escriba porfavor"<<endl;
         while(dato!='0'){
@@ -35,18 +37,17 @@ public:
             }
         }
     }
-    void mostrarLista(ListaCS *cab){
-        ListaCS *aux=cab;
-        cout<<"Lista"<<endl;
+    void mostrarLista(ListaCD *cab){
+        ListaCD *aux=cab;
         while (aux->sig!=cab){
-            cout<<aux->dato<<endl;
+            cout<<"Dato: "<<aux->dato<<endl;
             aux= aux->sig;
         }
-        cout<<aux->dato<<endl;
+        cout<<"Dato: "<<aux->dato<<endl;
         system("pause");
     }
-    void cambiarMayusAMinus(ListaCS *&cab){
-        ListaCS *aux=cab;
+    void cambiarMayusAMinus(ListaCD *&cab){
+        ListaCD *aux=cab;
         while(aux->sig!=cab){
             // mayusculas a minusculas
             if(aux->dato>=65&&aux->dato<=90){
@@ -73,7 +74,7 @@ void letrero(){
 	cout<<"*---------------Bienvenido--------------*"<<endl;
 	cout<<"*---------------------------------------*"<<endl;
 	cout<<"\nDescripcion del programa:"<<endl;
-	cout<<"Este programa tiene como fin de\ncambiar las letras mayusculas a minusculas y viceversa  "<<endl;//Escriba la descripcion aqui
+	cout<<"Este programa tiene como fin pasar las mayusculas a minusculas y viceversa "<<endl;//Escriba la descripcion aqui
 }
 void finDelPrograma(){
 	cout<<"*---------------------------------------*"<<endl;
@@ -81,14 +82,14 @@ void finDelPrograma(){
 	cout<<"*---------------------------------------*"<<endl;
 }
 int menu(int opt){
-	cout<<"Escoja una opcion\n 1)Cambiar caracteres de la lista \n 2)Mostrar Lista\n 3)Salir del programa\n->";
+	cout<<"Escoja una opcion\n 1)Invertir mayusculas a minusculas y viseversa \n 2)Mostrar Lista\n 3)Salir del programa\n->";
 	cin>>opt;
 	return opt;
 }
 int main(){
 letrero();
     setlocale(LC_ALL, "");
-	ListaCS objeto, *cab=NULL;
+	ListaCD objeto, *cab=NULL;
 	objeto.crearLista(cab);
 	int opt,aux;
 // SECCION DE APLICACION
