@@ -151,7 +151,7 @@ int main(){
     objeto.crearListaD(cab);
     objeto.detector(cab);
     objeto.mostrar(cab);
-    cout<<"La lista contiene "<<numericos<<"CONSONANTES y "<<especial<<" VOCALES"<<endl;
+    cout<<"La lista contiene "<<numericos<<" CONSONANTES y "<<especial<<" VOCALES"<<endl;
     // objeto.mostraranterior(cab);
 }
 
