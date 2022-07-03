@@ -9,5 +9,8 @@ class Menus{
 		void menuPersonaProveedor();
 		void existenciaProductos();
 		void registro();
+		void verRegistro();
+		void finRegistro();
+		void menuExiste();
 };
 #endif

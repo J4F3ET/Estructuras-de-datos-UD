@@ -17,10 +17,27 @@
 #include "Menus.cpp"
 using namespace std;
 int c=2,pO=2,pC=2;
-int getCoutCantProducts_Const(Constante proveedor[4]){
+int getCoutCantProducts_Const(Constante proveedor[],int nit){
+    int existencias=0,aux=0;
+    if(nit==0){//Si el nit es 0 entonces buscara todas las existencias de los proveedores constantes
+        for(int i=0;i<pC;i++){
+            aux=proveedor[i].getCantidad();
+            existencias=aux+existencias;
+        }
+    }else{
+        for(int i=0;i<pC;i++){
+            aux=proveedor[i].getNit();
+            if(aux==nit){//Encontro el nit entonces retorna las existencias de ese poroveedor especifico
+                existencias=proveedor[i].getCantidad();
+            }else{
+                existencias=-1;//Si retorna un -1 estonces no encontro el NIT
+            }
+        }
+    }
+    return existencias;
     
 }
-int getCoutCantProducts_Oca(Ocacional proveedor[1]){
+int getCoutCantProducts_Oca(Ocacional proveedor[]){
 
 }
 int main(){
@@ -185,11 +202,162 @@ int main(){
                 }while (opt!=3);
                 opt=0;
                 break;
-            case 2://Editar persona
+            case 2://Ver persona
+                system("cls");
+                do{
+                    menu.menuPersona();
+                    cin>>opt;
+                    switch (opt){//menu ver persona
+                        case 1://Persona cliente ver
+                            system("cls");
+                            do{
+                                menu.menuExiste();
+                                cin>>opt;
+                                switch(opt){
+                                case 1:
+                                    system("cls");
+                                    cout<<"Porfavor digite el numero de identidad de la persona\n>";
+                                    cin>>aux;
+                                    for(int i=0;i<c;i++){
+                                        if(aux==cliente[i].getIdent()){
+                                            menu.verRegistro();
+                                            cliente[i].getRegistro();
+                                            menu.finRegistro();
+                                        }
+                                    }
+                                    system("pause");
+                                    system("cls");
+                                    break;
+                                case 2:
+                                    system("cls");
+                                    for(int i=0;i<c;i++){
+                                        if(cliente[i].getIdent()!=0){
+                                            menu.verRegistro();
+                                            cliente[i].getRegistro();
+                                            menu.finRegistro();
+                                        }
+                                    }
+                                    system("pause");
+                                    system("cls");
+                                    break;
+                                case 3:
+                                    system("cls");
+                                    break;
+                                default:
+                                    system("cls");
+                                    break;
+                                }
+                            }while(opt!=3);
+                            opt=0;
+                            break;
+                        case 2://Persona proveedor 
+                            system("cls");
+                            do{
+                                menu.menuExiste();
+                                cin>>opt;
+                                switch(opt){
+                                    case 1://Ver proveedor especifico
+                                        system("cls");
+                                        cout<<"Porfavor digite el nit del proveedor"<<endl;
+                                        cin>>aux;
+                                        for(int i=0;i<pC;i++){
+                                            if(aux==proveedorConst[i].getNit()){
+                                                menu.verRegistro();
+                                                proveedorConst[i].getRegistro();
+                                                menu.finRegistro();
+                                                registro=true;
+                                            }
+                                        }
+                                        for(int i=0;i<pO;i++){
+                                            if(aux==proveedorOca[i].getNit()){
+                                                menu.verRegistro();
+                                                proveedorOca[i].getRegistro();
+                                                menu.finRegistro();
+                                                registro=true;
+                                            }
+                                        }
+                                        if(registro==false)
+                                            cout<<"Registro no encontrado"<<endl;
+                                        system("pause"); 
+                                        registro=false;                               
+                                        break;
+                                    case 2://Ver todos los proveedores
+                                        system("cls");
+                                        cout<<"----------------------------------------------------------"<<endl;
+                                        cout<<"Proveedores ocacionales"<<endl;
+                                        cout<<"----------------------------------------------------------"<<endl;
+                                        for(int i=0;i<pC;i++){
+                                            if(proveedorConst[i].getNit()!=0){
+                                                menu.verRegistro();
+                                                proveedorConst[i].getRegistro();
+                                                menu.finRegistro();
+                                            }
+                                        }
+                                        cout<<"----------------------------------------------------------"<<endl;
+                                        cout<<"Proveedores ocacionales"<<endl;
+                                        cout<<"----------------------------------------------------------"<<endl;
+                                        for(int i=0;i<pO;i++){
+                                            if(proveedorOca[i].getNit()!=0){
+                                                menu.verRegistro();
+                                                proveedorOca[i].getRegistro();
+                                                menu.finRegistro();
+                                            }
+                                        }
+                                        system("pause");                                
+                                        break;
+                                    case 3://Salir
+                                        system("cls");
+                                        break;
+                                    default:
+                                        system("cls");
+                                        break;
+                                }
+                                system("cls");
+                            }while(opt!=3);
+                            opt=0;
+                            system("pause");
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            system("cls");
+                            break;
+                    }
+                }while(opt!=3);
                 system("cls");
                 break;
             case 3://Existencia de productos
+                do{
+                    system("cls");
+                    menu.menuExiste();
+                    cin>>opt;
+                    switch (opt){//menu EXISTENCIA DE PRODUCTOS
+                        case 1://Proveedor especifico
+                            cout<<"Porvafor escriba el nit del proveedor"<<endl;
+                            cin>>aux;
+                            aux=getCoutCantProducts_Const(proveedorConst,aux);
+                            if(aux!=-1)
+                                cout<<"Las existencias del proveedor con el NIT digitado son "<<aux<<" productos"<<endl;
+                            else
+                                cout<<"Proveedor no existe"<<endl;
+                            system("pause");
+                            system("cls");
+                            break;
+                        case 2://Todas las existencias
+                            aux=0;
+                            cout<<"Las existencias de todos los proveedores son "<<getCoutCantProducts_Const(proveedorConst,aux)<<" productos"<<endl;
+                            system("pause");
+                            system("cls");
+                            break;
+                        case 3://Salir
+                            break;
+                        default:
+                            system("cls");
+                            break;
+                    }
+                }while(opt!=3);
                 system("cls");
+                opt=0;
                 break;
             case 4://Salir
                     //Salir------------------------------------------ FIN DEL PROGRAMA
