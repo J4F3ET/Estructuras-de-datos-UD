@@ -118,5 +118,6 @@
         </tr>
         <tr><td>53</td><td>Pilas</td><td>Solucionado</td></tr> 
         <tr><td>54</td><td>Colas</td><td>Solucionado</td></tr> 
+        <tr><td>55</td><td>ColasEnlazadas</td><td>Solucionado</td></tr> 
     </tbody>
 </table>
