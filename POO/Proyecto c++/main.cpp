@@ -15,8 +15,10 @@
 #include "Frecuentes.cpp"
 #include "Proveedor.cpp"
 #include "Menus.cpp"
+#include "Generador.h"
+#include "Generador.cpp"
 using namespace std;
-int c=2,pO=2,pC=2;
+int c=10,pO=2,pC=2;//CONSTANTES QUE C = CANTIDAD DE CLIENTES  PO y PC = Cantidad de provedores ocacionales(PO) o constantes(PC)
 int getCoutCantProducts_Const(Constante proveedor[],int nit,Frecuentes cliente[],string producto){
     int existencias=0,aux=0;
     if(nit==0){//Si el nit es 0 entonces buscara todas las existencias de los proveedores constantes
@@ -53,10 +55,25 @@ int main(){
     Frecuentes cliente[c];
     Ocacional proveedorOca[pO];
     Constante proveedorConst[pC];
+    Generador g;
+    Menus menu;
     string Saux;
     int opt,aux;
     bool registro=false;
-    Menus menu;
+    //-------------------------SECCION DE GENERADORES DE PERSONAS AL AZAR------------------------------    
+    for(int i=0;i<c-1;i++){
+        // void setRegistrar(string nom,int gen,int id,string prod,string org,int estr,int numCrop);
+        cliente[i].setRegistrar(g.getString(1),g.getNum(1),g.getNum(2),g.getString(2),g.getString(3),g.getNum(3),g.getNum(4));
+    }
+    for(int i=0;i<pC-1;i++){ 
+        // void setRegistro(string nom,int gen,int id,string nomEmpr,int nit,string proConst,int cantd);
+        proveedorConst[i].setRegistro(g.getString(1),g.getNum(1),g.getNum(2),g.getString(4),g.getNum(5),g.getString(2),g.getNum(4));
+    }
+    for(int i=0;i<pO-1;i++){ 
+        // void setRegistro(string nom,int gen,int id,string nomEmpr,int nit,string proOca,string fecha);
+        proveedorOca[i].setRegistro(g.getString(1),g.getNum(1),g.getNum(2),g.getString(4),g.getNum(5),g.getString(2),g.getString(5));
+    }
+//-----------------------------FIN DE GENERADORES ---------------------------------------
     do{
         menu.letrero();
         menu.menu();
