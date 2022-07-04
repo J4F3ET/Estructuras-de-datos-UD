@@ -17,7 +17,7 @@
 #include "Menus.cpp"
 using namespace std;
 int c=2,pO=2,pC=2;
-int getCoutCantProducts_Const(Constante proveedor[],int nit){
+int getCoutCantProducts_Const(Constante proveedor[],int nit,Frecuentes cliente[]){
     int existencias=0,aux=0;
     if(nit==0){//Si el nit es 0 entonces buscara todas las existencias de los proveedores constantes
         for(int i=0;i<pC;i++){
@@ -36,9 +36,6 @@ int getCoutCantProducts_Const(Constante proveedor[],int nit){
     }
     return existencias;
     
-}
-int getCoutCantProducts_Oca(Ocacional proveedor[]){
-
 }
 int main(){
     Frecuentes cliente[c];
@@ -335,7 +332,7 @@ int main(){
                         case 1://Proveedor especifico
                             cout<<"Porvafor escriba el nit del proveedor"<<endl;
                             cin>>aux;
-                            aux=getCoutCantProducts_Const(proveedorConst,aux);
+                            aux=getCoutCantProducts_Const(proveedorConst,aux,cliente);
                             if(aux!=-1)
                                 cout<<"Las existencias del proveedor con el NIT digitado son "<<aux<<" productos"<<endl;
                             else
@@ -345,7 +342,7 @@ int main(){
                             break;
                         case 2://Todas las existencias
                             aux=0;
-                            cout<<"Las existencias de todos los proveedores son "<<getCoutCantProducts_Const(proveedorConst,aux)<<" productos"<<endl;
+                            cout<<"Las existencias de todos los proveedores son "<<getCoutCantProducts_Const(proveedorConst,aux,cliente)<<" productos"<<endl;
                             system("pause");
                             system("cls");
                             break;

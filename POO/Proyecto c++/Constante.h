@@ -3,6 +3,7 @@
 #include "Proveedor.h"
 #include <string.h>
 using namespace std;
+class Frecuentes;
 class Constante: public Proveedor{
 private:
     string productoConst;
@@ -16,7 +17,7 @@ public:
     string getProductoConst();
     int getCantidad();
     void getRegistro();
-    friend int getCoutCantProducts_Const(Constante proveedor[],int aux);
+    friend int getCoutCantProducts_Const(Constante proveedor[],int aux,Frecuentes cliente[]);
 };
 
 #endif

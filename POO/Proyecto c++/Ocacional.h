@@ -16,6 +16,5 @@ public:
     string getProductoOca();
     string getFecha();
     void getRegistro();
-    friend int getCoutCantProducts_Oca(Ocacional proveedor[1]);
 };
 #endif
