@@ -11,6 +11,7 @@
         </tr>
         <tr><td>1</td><td>Parcial primer semestre</td><td>Solucionado</td></tr> 
         <tr><td>2</td><td>Taller repaso</td><td>Incompleto</td></tr> 
+        <tr><td>3</td><td>ProyectoC++</td><td>Solucionado</td></tr> 
     </tbody>
 </table>
 <h2>Estructura de datos</h2>
@@ -104,5 +105,18 @@
         <tr><td>50</td><td>Filtro de caracteres (numericos, alfabeticos,cespeciales)</td><td>Solucionado</td></tr> 
         <tr><td>51</td><td>Detector de palabra palindroma</td><td>Solucionado</td></tr> 
         <tr><td>52</td><td>Suma de listas</td><td>Solucionado</td></tr> 
+    </tbody>
+</table>
+<h2>Pilas y Colas</h2>
+<table>
+    <thead><h3>Lista Circulares Dobles</h3></thead>
+    <tbody>
+        <tr>
+            <th>#</th>
+            <th>Metodo</th>
+            <th>Estado</th>
+        </tr>
+        <tr><td>53</td><td>Pilas</td><td>Solucionado</td></tr> 
+        <tr><td>54</td><td>Colas</td><td>Solucionado</td></tr> 
     </tbody>
 </table>
