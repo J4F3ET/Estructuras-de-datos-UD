@@ -17,30 +17,43 @@
 #include "Menus.cpp"
 using namespace std;
 int c=2,pO=2,pC=2;
-int getCoutCantProducts_Const(Constante proveedor[],int nit,Frecuentes cliente[]){
+int getCoutCantProducts_Const(Constante proveedor[],int nit,Frecuentes cliente[],string producto){
     int existencias=0,aux=0;
     if(nit==0){//Si el nit es 0 entonces buscara todas las existencias de los proveedores constantes
-        for(int i=0;i<pC;i++){
-            aux=proveedor[i].getCantidad();
-            existencias=aux+existencias;
-        }
+        for(int i=0;i<pC;i++)
+            existencias=existencias+proveedor[i].getCantidad();
+        for(int i=0;i<c;i++)
+            existencias=existencias-cliente[i].getNumCompras();
     }else{
         for(int i=0;i<pC;i++){
-            aux=proveedor[i].getNit();
-            if(aux==nit){//Encontro el nit entonces retorna las existencias de ese poroveedor especifico
-                existencias=proveedor[i].getCantidad();
+            if(proveedor[i].getNit()==nit){//Encontro el nit entonces retorna las existencias de ese poroveedor especifico
+                for (int i=0;i<pC;i++){
+                    if(producto==proveedor[i].getProductoConst()){
+                        for(int i=0;i<pC;i++){
+                            aux=proveedor[i].getCantidad();
+                            existencias=aux+existencias;
+                        }
+                        for(int i=0;i<c;i++){
+                                if(producto==cliente[i].getProducto()){
+                                existencias=existencias-cliente[i].getNumCompras();
+                            }
+                        }
+                    }else{
+                        existencias=-1;//si retorna -1 entonces no encontro producto
+                    }
+                }
             }else{
                 existencias=-1;//Si retorna un -1 estonces no encontro el NIT
             }
         }
     }
     return existencias;
-    
 }
 int main(){
     Frecuentes cliente[c];
     Ocacional proveedorOca[pO];
     Constante proveedorConst[pC];
+    string Saux;
     int opt,aux;
     bool registro=false;
     Menus menu;
@@ -332,17 +345,20 @@ int main(){
                         case 1://Proveedor especifico
                             cout<<"Porvafor escriba el nit del proveedor"<<endl;
                             cin>>aux;
-                            aux=getCoutCantProducts_Const(proveedorConst,aux,cliente);
+                            cout<<"Porvafor escriba el producto del proveedor"<<endl;
+                            cin>>Saux;
+                            aux=getCoutCantProducts_Const(proveedorConst,aux,cliente,Saux);
                             if(aux!=-1)
-                                cout<<"Las existencias del proveedor con el NIT digitado son "<<aux<<" productos"<<endl;
+                                cout<<"Las existencias del proveedor con el NIT digitado y proucto descrito son "<<aux<<" productos"<<endl;
                             else
-                                cout<<"Proveedor no existe"<<endl;
+                                cout<<"Proveedor no existe o no concuerda el NIT con el producto del proveedor"<<endl;
                             system("pause");
                             system("cls");
                             break;
                         case 2://Todas las existencias
+                            Saux="Ninguno";
                             aux=0;
-                            cout<<"Las existencias de todos los proveedores son "<<getCoutCantProducts_Const(proveedorConst,aux,cliente)<<" productos"<<endl;
+                            cout<<"Las existencias de todos los productos son "<<getCoutCantProducts_Const(proveedorConst,aux,cliente,Saux)<<" productos"<<endl;
                             system("pause");
                             system("cls");
                             break;

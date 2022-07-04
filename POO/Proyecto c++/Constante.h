@@ -17,7 +17,6 @@ public:
     string getProductoConst();
     int getCantidad();
     void getRegistro();
-    friend int getCoutCantProducts_Const(Constante proveedor[],int aux,Frecuentes cliente[]);
+    friend int getCoutCantProducts_Const(Constante proveedor[],int aux,Frecuentes cliente[],string producto);
 };
-
 #endif

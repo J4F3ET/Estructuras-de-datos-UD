@@ -16,6 +16,6 @@ class Frecuentes:public Clientes{
         void setRegistrar(string nom,int gen,int id,string prod,string org,int estr,int numCrop);
         int getNumCompras();
         void getRegistro();
-        friend int getCoutCantProducts_Const(Constante proveedor[],int aux,Frecuentes cliente[]);
+        friend int getCoutCantProducts_Const(Constante proveedor[],int aux,Frecuentes cliente[],string producto);
 };
 #endif
