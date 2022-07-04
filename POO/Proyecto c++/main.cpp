@@ -284,7 +284,7 @@ int main(){
                                     case 2://Ver todos los proveedores
                                         system("cls");
                                         cout<<"----------------------------------------------------------"<<endl;
-                                        cout<<"Proveedores ocacionales"<<endl;
+                                        cout<<"Proveedores constantes"<<endl;
                                         cout<<"----------------------------------------------------------"<<endl;
                                         for(int i=0;i<pC;i++){
                                             if(proveedorConst[i].getNit()!=0){
