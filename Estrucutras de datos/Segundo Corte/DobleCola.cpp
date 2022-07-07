@@ -35,31 +35,51 @@ class Cola{
         }
         void mostrarCola(Cola *cab,Cola *cab2){
             Cola *aux=cab->sig,*aux2=cab2->sig;
-            cout<<"------------------------------------------"<<endl;
-            while(aux!=cab2){
-                cout<<"Dato = "<<aux->dato<<endl;
-                aux=aux->sig;
+            if(colaVacia(cab)==true){
+                cout<<"La cola 1 esta vacia..."<<endl;
+            }else{
+                cout<<"------------------------------------------"<<endl;
+                while(aux!=cab2){
+                    cout<<"Dato = "<<aux->dato<<endl;
+                    aux=aux->sig;
+                }
             }
-            cout<<"------------------------------------------"<<endl;
-            while(aux2){
-                cout<<"Dato = "<<aux2->dato<<endl;
-                aux2=aux2->sig;
+            if(colaVacia(cab2)==true){
+            cout<<"La cola 2 esta vacia..."<<endl;
+            }else{
+                cout<<"------------------------------------------"<<endl;
+                while(aux2){
+                    cout<<"Dato = "<<aux2->dato<<endl;
+                    aux2=aux2->sig;
+                }
             }
-        }     
+        }    
         bool colaVacia(Cola *cab){
             if(cab->sig==NULL||cab->sig->dato==-2)//cab->sig==NULL
                 return true;
             else
                 return false;
         }
-        int retirarElemento(Cola *&cab){
-            Cola *aux=cab->sig;
+        int retirarElemento(Cola *&cab,Cola *cab2,int orden){
+            Cola *aux2=cab,*aux=cab;
             if(colaVacia(cab)==true){
                 cout<<"La cola esta vacia..."<<endl;
                 system("pause");
                 return 0;
             }else{
-                cab->sig=aux->sig;
+                if(orden==1){
+                    while(aux->sig!=cab2){
+                        aux2=aux;
+                        aux=aux->sig;
+                    }
+                    aux2->sig=cab2;
+                }else{
+                    while(aux->sig){
+                        aux2=aux;
+                        aux=aux->sig;
+                    }
+                    aux2->sig=NULL;
+                }
                 cout<<"Dato eliminado con exito..."<<endl;
                 delete aux;
                 system("pause");
@@ -113,12 +133,15 @@ int main(){
             system("pause");
 			break;
 		case 3:
-            if(ordenE==1){
-                objeto.retirarElemento(cab);
-                ordenE=2;
+            cout<<"--------------------------\nDe que cola desea retirar el dato\n1 o 2"<<endl;
+            cin>>orden;
+            if(orden==1){
+                objeto.retirarElemento(cab,cab2,orden);
             }else{
-                objeto.retirarElemento(cab2);
-                ordenE=1;
+                if(orden==2)
+                    objeto.retirarElemento(cab2,cab,orden);
+                else   
+                    cout<<"Opcion incorrecta\nPor favor intentelo denuevo."<<endl;
             }
 			break;
 		case 4:// FIN DEL PROGRAMA
