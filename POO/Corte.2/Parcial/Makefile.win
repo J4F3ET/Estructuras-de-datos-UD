@@ -1,0 +1,52 @@
+# Project: Parcial
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Persona.o Estudiante.o Profesor.o Lector.o Autor.o Ejemplares.o Direccion.o Libro.o
+LINKOBJ  = main.o Persona.o Estudiante.o Profesor.o Lector.o Autor.o Ejemplares.o Direccion.o Libro.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Parcial.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Persona.o: Persona.cpp
+	$(CPP) -c Persona.cpp -o Persona.o $(CXXFLAGS)
+
+Estudiante.o: Estudiante.cpp
+	$(CPP) -c Estudiante.cpp -o Estudiante.o $(CXXFLAGS)
+
+Profesor.o: Profesor.cpp
+	$(CPP) -c Profesor.cpp -o Profesor.o $(CXXFLAGS)
+
+Lector.o: Lector.cpp
+	$(CPP) -c Lector.cpp -o Lector.o $(CXXFLAGS)
+
+Autor.o: Autor.cpp
+	$(CPP) -c Autor.cpp -o Autor.o $(CXXFLAGS)
+
+Ejemplares.o: Ejemplares.cpp
+	$(CPP) -c Ejemplares.cpp -o Ejemplares.o $(CXXFLAGS)
+
+Direccion.o: Direccion.cpp
+	$(CPP) -c Direccion.cpp -o Direccion.o $(CXXFLAGS)
+
+Libro.o: Libro.cpp
+	$(CPP) -c Libro.cpp -o Libro.o $(CXXFLAGS)
