@@ -220,3 +220,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit18]
+FileName=Libreria.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
