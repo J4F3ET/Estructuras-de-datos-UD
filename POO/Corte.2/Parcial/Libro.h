@@ -9,7 +9,7 @@ using namespace std;
 class Libro{
 	string nombreL;
 	Autor autor;
-	int ejemplares;
+	Ejemplares ejemplares;
 	public:
 		Libro();
 		~Libro();
