@@ -114,9 +114,11 @@ int main(){
 		switch (opt)
 		{
 		case 1:
-			system("cls");
-            cout<<"El dato se registrara en la cola "<<orden<<endl;
-            cout<<"Ingrese el dato para la cola"<<endl;
+			do{
+            	cout<<"En que cola se quiere registrar\n1 o 2\n >";
+            	cin>>orden;	
+			}while(orden<0&&orden>3);
+            cout<<"Ingrese el dato(numero) para la cola\n >";
             cin>>aux;
             if(orden==1){
                 objeto.agregarElemento(cab,aux,cab2,orden);
@@ -127,14 +129,15 @@ int main(){
             }
 			break;
 		case 2:
-            system("cls");
             objeto.mostrarCola(cab,cab2);
             cout<<"--------------------------"<<endl;
             system("pause");
 			break;
 		case 3:
-            cout<<"--------------------------\nDe que cola desea retirar el dato\n1 o 2"<<endl;
-            cin>>orden;
+            do{
+            	cout<<"--------------------------\nDe que cola desea retirar el dato\n1 o 2"<<endl;
+            	cin>>orden;	
+			}while(orden<0&&orden>3);
             if(orden==1){
                 objeto.retirarElemento(cab,cab2,orden);
             }else{
