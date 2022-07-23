@@ -4,8 +4,7 @@
 using namespace std;
 class ArbolBin;
 class Pila;
-class Pila
-{
+class Pila{
 	ArbolBin *dato;
 	Pila *sig;
 
@@ -32,8 +31,7 @@ public:
 		aux->sig->sig = NULL;
 		aux->sig->dato = dato;
 	}
-	ArbolBin *retirarPila(Pila *&cab)
-	{
+	ArbolBin *retirarPila(Pila *&cab){
 		Pila *aux = cab, *aux1;
 		ArbolBin *dir_dato;
 		aux1 = aux;
@@ -53,36 +51,33 @@ public:
 			cout << "Pila vacia ...." << endl;
 	}
 };
-
-class ArbolBin
-{
+class ArbolBin{
 	int dato;
-	ArbolBin *izq, *der;
+	ArbolBin *izq, *der,*as;
 
 public:
-	void crearRaiz(ArbolBin *&raiz, int dato)
-	{
+	void crearRaiz(ArbolBin *&raiz, int dato){
 		raiz = new ArbolBin;
 		raiz->dato = dato;
 		raiz->izq = NULL;
 		raiz->der = NULL;
 	}
-	void agregarIzq(ArbolBin *&temp, int dato)
-	{
+	void agregarIzq(ArbolBin *&temp,int dato){
 		ArbolBin *nuevo;
 		nuevo = new ArbolBin;
 		nuevo->dato = dato;
 		nuevo->izq = NULL;
 		nuevo->der = NULL;
+		nuevo->as = temp;
 		temp->izq = nuevo;
 	}
-	void agregarDer(ArbolBin *&temp, int dato)
-	{
+	void agregarDer(ArbolBin *&temp, int dato){
 		ArbolBin *nuevo;
 		nuevo = new ArbolBin;
 		nuevo->dato = dato;
 		nuevo->izq = NULL;
 		nuevo->der = NULL;
+		nuevo->as = temp;
 		temp->der = nuevo;
 	}
 	void crearArbol(ArbolBin *&raiz)
@@ -91,31 +86,23 @@ public:
 		int dato = 666;
 		while (dato != -1)
 		{
-			cout << "Dato = ";
+			cout << "Dato > ";
 			cin >> dato;
-			if (dato != -1)
-			{
-				if (!raiz)
-				{
+			if (dato != -1){
+				if (!raiz){
 					crearRaiz(raiz, dato);
-				}
-				else
-				{
+				}else{
 					temp1 = temp2 = raiz;
-					while (temp2 && temp1->dato != dato)
-					{
+					while (temp2 && temp1->dato != dato){
 						temp1 = temp2;
 						if (dato < temp1->dato)
 							temp2 = temp2->izq;
 						else
 							temp2 = temp2->der;
 					}
-					if (temp1->dato == dato)
-					{
+					if (temp1->dato == dato){
 						cout << "Numero repetido" << endl;
-					}
-					else
-					{
+					}else{
 						if (dato < temp1->dato)
 							agregarIzq(temp1, dato);
 						else
@@ -125,8 +112,7 @@ public:
 			}
 		}
 	}
-	void inorden(ArbolBin *raiz)
-	{
+	void inorden(ArbolBin *raiz){
 		Pila *aux, obj_pila;
 		ArbolBin *temp = raiz;
 		cout << "Arbol Binario ....." << endl;
@@ -148,89 +134,7 @@ public:
 			}
 		}
 	}
-	bool nodoHoja(ArbolBin *raiz, ArbolBin *raiz2, int clave)
-	{ // no funciona
-		ArbolBin *temp = raiz, *temp2 = raiz2;
-		bool r = false;
-		if (clave > temp->dato)
-		{ // dato es menor a clave
-			cout << "Dato menor a clave  " << temp->dato << endl;
-			if (!temp->izq && temp->der)
-			{
-				r = true;
-				cout << "!temp->izq&&temp->der" << endl;
-			}
-			if (temp->izq == temp2 && !temp->der)
-			{
-				r = true;
-				cout << "temp->izq==temp2&&!temp->der" << endl;
-			}
-			if (temp2->der == temp && !temp2)
-				r = false;
-		}
-		else
-		{ // dato es mayor a clave
-			if (!temp->der && temp->izq)
-				r = true;
-			if (!temp->der && temp == temp2->der)
-				r = true;
-		}
-		if (temp->der && temp->izq)
-			r = false;
-		system("pause");
-		return r;
-	}
-	void noTerminales(ArbolBin *raiz)
-	{
-		Pila *aux, obj_pila;
-		ArbolBin *temp = raiz, *temp2 = raiz;
-		int clave = temp->dato;
-		cout << "Arbol Binario ....." << endl;
-		obj_pila.iniciarPila(aux);
-		while (temp)
-		{
-			obj_pila.agregarPila(aux, temp);
-			temp = temp->izq;
-		}
-		while (!obj_pila.pilaVacia(aux))
-		{
-			temp = obj_pila.retirarPila(aux);
-			if (nodoHoja(temp, temp2, clave) == false)
-				cout << "Dato = " << temp->dato << endl;
-			temp2 = temp;
-			temp = temp->der;
-			while (temp)
-			{
-				obj_pila.agregarPila(aux, temp);
-				temp = temp->izq;
-			}
-		}
-	}
-	void mostrarHojas(ArbolBin *raiz)
-	{
-		Pila *aux, obj_pila;
-		ArbolBin *temp = raiz;
-		cout << "Arbol Binario ....." << endl;
-		obj_pila.iniciarPila(aux);
-		while (temp)
-		{
-			obj_pila.agregarPila(aux, temp);
-			temp = temp->izq;
-		}
-		while (!obj_pila.pilaVacia(aux))
-		{
-			temp = obj_pila.retirarPila(aux);
-			cout << "Dato = " << temp->dato << endl;
-			temp = temp->der;
-			while (temp)
-			{
-				obj_pila.agregarPila(aux, temp);
-				temp = temp->izq;
-			}
-		}
-	}
-	void mostrarArbol(ArbolBin *raiz, int contador)
-	{
+	void mostrarArbol(ArbolBin *raiz, int contador){
 		if (raiz != NULL)
 		{
 			mostrarArbol(raiz->der, contador + 1);
@@ -242,60 +146,147 @@ public:
 			mostrarArbol(raiz->izq, contador + 1);
 		}
 	}
+	void preOrden(ArbolBin *raiz){
+		if(raiz){
+			cout<<raiz->dato<<"-";
+			preOrden(raiz->izq);
+			preOrden(raiz->der);
+		}
+	}
+	void posOrden(ArbolBin *raiz){
+		if(raiz){
+			posOrden(raiz->izq);
+			posOrden(raiz->der);
+			cout <<raiz->dato<<"-";
+		}
+	}
+	ArbolBin *buscar(ArbolBin *raiz,int dato){
+		Pila *aux, obj_pila;
+		ArbolBin *temp = raiz;
+		obj_pila.iniciarPila(aux);
+		while(temp){
+			obj_pila.agregarPila(aux,temp);
+			temp=temp->izq;
+		}
+		while(!obj_pila.pilaVacia(aux)){
+			temp = obj_pila.retirarPila(aux);
+			if(temp->dato==dato)
+				return temp;
+			temp = temp->der;
+			while (temp){
+				obj_pila.agregarPila(aux, temp);
+				temp = temp->izq;
+			}
+		}
+		temp=NULL;
+		return temp;
+	}
+	int calcularNivel(ArbolBin *raiz){
+		int nivel=0;
+		if(raiz->izq&&raiz->izq->der!=raiz)
+			nivel++;	
+		if(raiz->der&&raiz->der->izq!=raiz)
+			nivel++;
+		return nivel;
+	}
+	void nodosEspeciales(ArbolBin *raiz,int ord){
+		Pila *aux, obj_pila;
+		ArbolBin *temp = raiz;
+		cout << "Arbol Binario ....." << endl;
+		obj_pila.iniciarPila(aux);
+		while (temp){
+			obj_pila.agregarPila(aux, temp);
+			temp = temp->izq;
+		}
+		while (!obj_pila.pilaVacia(aux)){
+			temp = obj_pila.retirarPila(aux);
+			if(ord==0){
+				if(calcularNivel(temp)==ord){
+					cout<<"Nodo Hoja > "<<temp->dato<<endl;
+				}
+			}else{
+				if(calcularNivel(temp)!=0){
+					cout<<"Nodo No Terminal > "<<temp->dato<<endl;
+				}
+			}
+			temp = temp->der;
+			while (temp)
+			{
+				obj_pila.agregarPila(aux, temp);
+				temp = temp->izq;
+			}
+		}
+	}
 };
-void menu()
-{
+void menu(){
 	cout << "Menu de opciones" << endl;
-	cout << "(1).Mostrar Inorden" << endl;	// LiSTO -> IZQ - RAIZ - DER
-	cout << "(2).Mostrar ArbolBin" << endl; // FALTA -> IZQ - DER - RAIZ
-	cout << "(3).Mostrar Preorden" << endl; // FALTA -> RAIZ - IZQ - DER
+	cout << "[1].Mostrar Inorden" << endl;	// Listo -> IZQ - RAIZ - DER
+	cout << "[2].Mostrar Preorden" << endl; // Listo -> IZQ - DER - RAIZ
+	cout << "[3].Mostrar Posorden" << endl; // Listo -> RAIZ - IZQ - DER
 	// UN PROGRAMA QUE MUESTRE LOS NODOS NO TERMINALES
 	// QUE TIENEN AL MENOS DE UN DESCENDIENTE
-	cout << "(4).Mostrar nodos NO TERMINALES" << endl; // FALTA METODO EN (PRE POS IN)ORDEN
+	cout << "[4].Mostrar nodos no terminales" << endl; 
 	// MUESTRE LOS NODOS HOJAS
 	// MUESTRE EL PESO DE LOS NODOS
 	// buscar nodo de un arbol y calcular el nivel
 	// calcular la altura del arbol
 	// determinar si entre dos nodos hay camino
 	// determine la longitud entre dos nodos
-	// calcular longitud entre dos nodos(debe de existir camino)
-	cout << "(5).Salir" << endl;
+	// calcular longitud entre dos nodos debe de existir camino)
+	cout << "[5].Mostrar Arbol" << endl;
+	cout << "[6].Buscar y mostrar nivel" << endl;
+	cout << "[7].Salir" << endl;
 }
 int main()
 {
-	ArbolBin *raiz = NULL, obj_arbol;
+	ArbolBin *raiz = NULL, obj_arbol,*aux;
 	obj_arbol.crearArbol(raiz);
-	int opt;
-	do
-	{
+	int opt,dato;
+	do{
 		system("cls");
 		menu();
 		cin >> opt;
-		switch (opt)
-		{
+		switch (opt){
 		case 1: // MOSTRAR INORDEN
 			obj_arbol.inorden(raiz);
 			system("pause");
 			break;
-		case 2: // MOSTRAR ArbolBin
+		case 2: // MOSTRAR PREORDEN
+			obj_arbol.preOrden(raiz);
+			system("pause");
+			break;
+		case 3: // MOSTRAR POSORDEN
+			obj_arbol.posOrden(raiz);
+			system("pause");
+			break;
+		case 4: // MOSTRAR NODOS NO TERMINALES EN INORDEN
+			obj_arbol.nodosEspeciales(raiz,1);
+			system("pause");
+			break;
+		case 5: //MOSTRAR ARBOL
 			obj_arbol.mostrarArbol(raiz, 0);
 			system("pause");
 			break;
-
-		case 3: // MOSTRAR PREORDEN
-			break;
-
-		case 4: // MOSTRAR NODOS NO TERMINALES EN INORDEN
-			obj_arbol.noTerminales(raiz);
+		case 6: //Buscar y mostrar nivel
+			cout<<"Digite el dato que quiere buscar > ";
+			cin>>dato;
+			aux=obj_arbol.buscar(raiz,dato);
+			if(aux){
+				dato=obj_arbol.calcularNivel(aux);
+				cout<<"**Nodo encontrado**\nNivel del nodo >"<<dato<<endl;
+			}else{
+				cout<<"No se encontro el dato en el arbol"<<endl;
+			}
 			system("pause");
+			dato=0;
 			break;
-		case 5: // SALIR DEL PROGRAMA
+		case 7: // SALIR DEL PROGRAMA
 			break;
 		default: // ERROR EN OPCION
 			cout << "Intentelo denuevo" << endl;
 			system("pause");
 			break;
 		}
-	} while (opt != 5);
+	} while (opt != 7);
 	return 0;
 }
