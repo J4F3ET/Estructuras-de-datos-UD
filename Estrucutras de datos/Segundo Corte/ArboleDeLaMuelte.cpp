@@ -1,4 +1,3 @@
-// Ãrboles binarios (creaciÃ³n y recorrido en inorden)
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -80,8 +79,7 @@ public:
 		nuevo->as = temp;
 		temp->der = nuevo;
 	}
-	void crearArbol(ArbolBin *&raiz)
-	{
+	void crearArbol(ArbolBin *&raiz){
 		ArbolBin *temp1, *temp2;
 		int dato = 666;
 		while (dato != -1)
@@ -217,28 +215,41 @@ public:
 			}
 		}
 	}
+	int pesoNodo(ArbolBin *raiz){//FALTA NO TERMINADO
+		int peso=0;
+		if(raiz){
+			pesoNodo(raiz->izq);
+			pesoNodo(raiz->der);
+			peso++;
+		}
+		return peso;
+	}
 };
 void menu(){
 	cout << "Menu de opciones" << endl;
-	cout << "[1].Mostrar Inorden" << endl;	// Listo -> IZQ - RAIZ - DER
-	cout << "[2].Mostrar Preorden" << endl; // Listo -> IZQ - DER - RAIZ
-	cout << "[3].Mostrar Posorden" << endl; // Listo -> RAIZ - IZQ - DER
-	// UN PROGRAMA QUE MUESTRE LOS NODOS NO TERMINALES
-	// QUE TIENEN AL MENOS DE UN DESCENDIENTE
+	cout << "[1].Mostrar Inorden" << endl;//IZQ - RAIZ - DER--------------Listo
+	cout << "[2].Mostrar Preorden" << endl;//IZQ - DER - RAIZ--------------Listo
+	cout << "[3].Mostrar Posorden" << endl;//RAIZ - IZQ - DER--------------Listo
+	// UN PROGRAMA QUE MUESTRE LOS NODOS NO TERMINALES  ------------------------------Listo
 	cout << "[4].Mostrar nodos no terminales" << endl; 
-	// MUESTRE LOS NODOS HOJAS
+	// MUESTRE LOS NODOS HOJAS--------------------------------------------------------Listo
+	cout << "[5].Mostrar nodos terminales" << endl; 
 	// MUESTRE EL PESO DE LOS NODOS
-	// buscar nodo de un arbol y calcular el nivel
+	cout << "[6].Mostrar peso del nodo" << endl; 
 	// calcular la altura del arbol
+	cout << "[7].Altura del arbol" << endl; 
 	// determinar si entre dos nodos hay camino
+	cout << "[8].Existe camino entre los nodos" << endl; 
 	// determine la longitud entre dos nodos
+	cout << "[9].Cual es la longitud del nodo" << endl;
 	// calcular longitud entre dos nodos debe de existir camino)
-	cout << "[5].Mostrar Arbol" << endl;
-	cout << "[6].Buscar y mostrar nivel" << endl;
-	cout << "[7].Salir" << endl;
+	cout << "[10].Cual es la longitud entre dos nodos" << endl;
+	// buscar nodo de un arbol y calcular el nivel------------------------------------Listo
+	cout << "[11].Buscar y mostrar nivel" << endl;
+	cout << "[12].Mostrar Arbol" << endl;
+	cout << "[13].Salir" << endl;
 }
-int main()
-{
+int main(){
 	ArbolBin *raiz = NULL, obj_arbol,*aux;
 	obj_arbol.crearArbol(raiz);
 	int opt,dato;
@@ -263,11 +274,32 @@ int main()
 			obj_arbol.nodosEspeciales(raiz,1);
 			system("pause");
 			break;
-		case 5: //MOSTRAR ARBOL
-			obj_arbol.mostrarArbol(raiz, 0);
+		case 5: // MOSTRAR NODOS TERMINALES
+			obj_arbol.nodosEspeciales(raiz,0);
 			system("pause");
 			break;
-		case 6: //Buscar y mostrar nivel
+		case 6: // MOSTRAR PESO DEL NODO
+
+			dato=obj_arbol.pesoNodo(raiz);
+			system("pause");
+			break;
+		case 7: // ALTURA DEL ARBOL
+			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			system("pause");
+			break;
+		case 8: // DETERMINAR CAMINO ENTRE NODOS
+			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			system("pause");
+			break;
+		case 9: // DETERMINE LA LONGITUD DEL NODO
+			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			system("pause");
+			break;
+		case 10: // DETERMINE LA LONGITUD ENTRE NODOS
+			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			system("pause");
+			break;
+		case 11://BUSCAR Y MOSTRAR EL NIVEL
 			cout<<"Digite el dato que quiere buscar > ";
 			cin>>dato;
 			aux=obj_arbol.buscar(raiz,dato);
@@ -280,13 +312,17 @@ int main()
 			system("pause");
 			dato=0;
 			break;
-		case 7: // SALIR DEL PROGRAMA
+		case 12: //MOSTRAR ARBOL
+			obj_arbol.mostrarArbol(raiz, 0);
+			system("pause");
+			break;
+		case 13: //SALIR DEL PROGRAMA
 			break;
 		default: // ERROR EN OPCION
 			cout << "Intentelo denuevo" << endl;
 			system("pause");
 			break;
 		}
-	} while (opt != 7);
+	} while (opt != 8);
 	return 0;
 }
