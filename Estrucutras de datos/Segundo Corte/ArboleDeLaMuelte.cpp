@@ -60,6 +60,7 @@ public:
 		raiz->dato = dato;
 		raiz->izq = NULL;
 		raiz->der = NULL;
+		raiz->as= NULL;
 	}
 	void agregarIzq(ArbolBin *&temp,int dato){
 		ArbolBin *nuevo;
@@ -215,14 +216,77 @@ public:
 			}
 		}
 	}
-	int pesoNodo(ArbolBin *raiz){//FALTA NO TERMINADO
-		int peso=0;
-		if(raiz){
-			pesoNodo(raiz->izq);
-			pesoNodo(raiz->der);
-			peso++;
+	bool camino(ArbolBin *raiz,int de1,int hasta2){
+		bool r=false;
+		ArbolBin *aux;
+		aux=buscar(raiz,de1);
+		if(aux){
+			while(aux->as){
+				if(aux->as->dato==hasta2)
+					r=true;
+				aux=aux->as;
+			}
+		}
+		if((de1==raiz->dato||hasta2==raiz->dato)&&(buscar(raiz,de1))&&(buscar(raiz,hasta2)))
+			r=true;
+		return r;
+	}
+	int pesoNodo(ArbolBin *raiz,int dato){
+		int peso=-1;
+		ArbolBin *temp;
+		temp=buscar(raiz,dato);
+		if(temp){
+			Pila *aux, obj_pila;
+			obj_pila.iniciarPila(aux);
+			while (temp)
+			{
+				obj_pila.agregarPila(aux, temp);
+				temp = temp->izq;
+			}
+			while (!obj_pila.pilaVacia(aux))
+			{
+				temp = obj_pila.retirarPila(aux);
+				peso++;
+				temp = temp->der;
+				while (temp)
+				{
+					obj_pila.agregarPila(aux, temp);
+					temp = temp->izq;
+				}
+			}
+		}else{
+			cout<<"Nodo no encontrado"<<endl;
 		}
 		return peso;
+	}
+	int alturaNodo(ArbolBin *raiz){
+		int altura=0,x=-1,y=-1;
+		if(calcularNivel(raiz)!=0){
+			if(raiz->der!=NULL)
+				x=alturaNodo(raiz->der);
+			if(raiz->izq!=NULL)
+				y=alturaNodo(raiz->izq);
+		}	
+		return 1+max(x,y);
+	}
+	int getClave(ArbolBin *raiz){
+		return raiz->dato;
+	}
+	int longitud(ArbolBin *raiz,int de1,int hasta2,int r){
+		ArbolBin *aux;
+		aux=buscar(raiz,de1);
+		if(aux){
+			if(aux->dato!=raiz->dato){
+				while(aux->as){
+					r++;
+					aux=aux->as;
+				}
+			}else{
+				r=longitud(raiz,hasta2,de1,r);
+			}
+		}else
+			cout<<"Nodo no encontrado..."<<endl;
+		return r;
 	}
 };
 void menu(){
@@ -234,15 +298,15 @@ void menu(){
 	cout << "[4].Mostrar nodos no terminales" << endl; 
 	// MUESTRE LOS NODOS HOJAS--------------------------------------------------------Listo
 	cout << "[5].Mostrar nodos terminales" << endl; 
-	// MUESTRE EL PESO DE LOS NODOS
+	// MUESTRE EL PESO DE LOS NODOS---------------------------------------------------Listo
 	cout << "[6].Mostrar peso del nodo" << endl; 
-	// calcular la altura del arbol
+	// calcular la altura del arbol---------------------------------------------------Listo
 	cout << "[7].Altura del arbol" << endl; 
-	// determinar si entre dos nodos hay camino
+	// determinar si entre dos nodos hay camino---------------------------------------Listo
 	cout << "[8].Existe camino entre los nodos" << endl; 
 	// determine la longitud entre dos nodos
 	cout << "[9].Cual es la longitud del nodo" << endl;
-	// calcular longitud entre dos nodos debe de existir camino)
+	// calcular longitud entre dos nodos debe de existir camino)-----------------------Listo
 	cout << "[10].Cual es la longitud entre dos nodos" << endl;
 	// buscar nodo de un arbol y calcular el nivel------------------------------------Listo
 	cout << "[11].Buscar y mostrar nivel" << endl;
@@ -251,9 +315,11 @@ void menu(){
 }
 int main(){
 	ArbolBin *raiz = NULL, obj_arbol,*aux;
+	cout<<"8-3-1-6-4-7-10-14-13"<<endl;
 	obj_arbol.crearArbol(raiz);
 	int opt,dato;
 	do{
+		fflush;
 		system("cls");
 		menu();
 		cin >> opt;
@@ -279,25 +345,54 @@ int main(){
 			system("pause");
 			break;
 		case 6: // MOSTRAR PESO DEL NODO
-
-			dato=obj_arbol.pesoNodo(raiz);
+			cout<<"Escriba el nodo"<< endl;
+			cin>>dato;
+			dato=obj_arbol.pesoNodo(raiz,dato);
+			cout<<"El peso del nodo es > "<<dato<< endl;
 			system("pause");
 			break;
 		case 7: // ALTURA DEL ARBOL
-			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			dato=obj_arbol.alturaNodo(raiz);
+			cout<<"Altura >"<<dato<<endl;
 			system("pause");
 			break;
 		case 8: // DETERMINAR CAMINO ENTRE NODOS
-			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			cout<<"Escriba el nodo desde"<< endl;
+			cin>>dato;
+			cout<<"Escriba el nodo hasta"<< endl;
+			cin>>opt;
+			if(obj_arbol.camino(raiz,dato,opt)==true)
+				cout<<"Existe camino"<<endl;
+			else
+				cout<<"No existe camino"<<endl;
 			system("pause");
+			opt=8;
 			break;
 		case 9: // DETERMINE LA LONGITUD DEL NODO
-			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			dato=obj_arbol.getClave(raiz);
+			cout<<"Escriba el nodo >";
+			cin>>opt;
+			if(opt!=dato){
+				dato=obj_arbol.longitud(raiz,opt,dato,0);
+				if(dato!=0)
+					cout<<"La longitud es >"<<dato<<endl;
+			}else
+				cout <<"Longitud de la raiz es 0"<<endl;
 			system("pause");
+			opt=9;
 			break;
 		case 10: // DETERMINE LA LONGITUD ENTRE NODOS
-			cout<<"SIN PROGRAMAR"<< endl;//TODAVIA NO ESTA LA OPCION
+			cout<<"Escriba el nodo desde"<< endl;
+			cin>>dato;
+			cout<<"Escriba el nodo hasta"<< endl;
+			cin>>opt;
+			if(obj_arbol.camino(raiz,dato,opt)==true){
+				dato=obj_arbol.longitud(raiz,dato,opt,0);
+				cout<<"La longitud es >"<<dato<<endl;
+			}else
+				cout<<"No existe camino"<<endl;
 			system("pause");
+			opt=10;
 			break;
 		case 11://BUSCAR Y MOSTRAR EL NIVEL
 			cout<<"Digite el dato que quiere buscar > ";
@@ -323,6 +418,6 @@ int main(){
 			system("pause");
 			break;
 		}
-	} while (opt != 8);
+	} while (opt != 13);
 	return 0;
 }
