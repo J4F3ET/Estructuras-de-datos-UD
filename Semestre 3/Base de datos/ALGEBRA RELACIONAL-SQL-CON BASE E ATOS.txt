@@ -1,0 +1,25 @@
+-------------------------------------------------------TRABAJO DE SENTENCIA---------------------------------------------
+(2.).Obtener el codigo de los grupos de la asignatura base de datos.
+>A.R
+>SQL
+(3.)Obtener los nombres de los estudiantes que han inscrito la asignatura Base de datos.
+>A.R
+((estudiante TIMES estudiante_grupo)TIMES grupo)[estudiante.nombre,asignatura.nombre]WHERE estudiante.codigo = estudiante_grupo.cod_estudiante AND cod_asig = asignatura.codigo AND asignatura.nombre='BASE DE DATOS'
+>SQL
+SELECT estudiante.nombre 
+FROM estudiante,estudiante_grupo,asignatura 
+WHERE estudiante.codigo = estudiante_grupo.cod_estudiante AND cod_asig = asignatura.codigo AND asignatura.nombre='BASE DE DATOS';
+	
+-------------------------------------------------------COMANDOS--------------------------------------------------------
+nota " nunca en una sintazis SQL se coloca un []" 
+select now(); <- PARA VER EL FORMATO DE LA FECHA
+INSERT INTO nombre_tabla [ (columna,columna,...)]
+	VALUES ('valor','valor','valor'...';
+----------------------------------------------------BORRAR LOS DATOS---------------------------------------------------
+DELETE FROM nombre_tabla 
+	[WHERE condicion "and - or" condicion...]; 
+
+-- ----------------------------------------------------CONSULTAR-------------------------------------------------------
+	SELECT  columna,columna... (para mostrar todas las columnas se coloca un *) 
+	FROM tabla,tabla,tabla 
+	[WHERE condicion ...];
